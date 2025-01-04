@@ -1,73 +1,102 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Weather API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
+A **Weather API** é um projeto desenvolvido em NestJS que permite consultar o clima de qualquer cidade em tempo real, consumindo dados de APIs externas como a OpenWeatherMap. Esta API é ideal para ser usada em sistemas que precisam de informações meteorológicas atualizadas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Recursos
+- Consulta de clima de qualquer cidade.
+- Integração com APIs externas para obtenção de dados meteorológicos.
+- Respostas formatadas com informações relevantes, como temperatura, umidade e descrição do tempo.
 
-## Description
+## Tecnologias Utilizadas
+- **NestJS**: Framework backend modular e escalável.
+- **Axios**: Biblioteca para requisições HTTP.
+- **OpenWeatherMap API**: Serviço de dados meteorológicos.
+- **@nestjs/config**: Gerenciamento de variáveis de ambiente.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Instalação e Configuração
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/emanoelCarvalho/weather-api.git
+   ```
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd weather-api
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Configure as variáveis de ambiente no arquivo `.env`:
+   ```env
+   OPENWEATHERMAP_API_KEY=your-api-key-here
+   ```
+   Substitua `your-api-key-here` pela sua chave de API da OpenWeatherMap.
 
-## Installation
+5. Inicie o servidor:
+   ```bash
+   npm run start
+   ```
 
+## Endpoints
+### Consulta de Clima
+**GET** `/weather/:city`
+
+#### Parâmetros:
+- `city`: Nome da cidade que deseja consultar (string).
+
+#### Exemplo de Requisição:
 ```bash
-$ npm install
+GET http://localhost:3000/weather/London
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+#### Exemplo de Resposta:
+```json
+{
+  "coord": {
+    "lon": -0.1257,
+    "lat": 51.5085
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
+    }
+  ],
+  "main": {
+    "temp": 15.32,
+    "feels_like": 14.56,
+    "temp_min": 13.89,
+    "temp_max": 16.67,
+    "pressure": 1023,
+    "humidity": 62
+  },
+  "name": "London"
+}
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+## Estrutura do Projeto
+```
+weather-api/
+├── src/
+│   ├── app.module.ts
+│   ├── weather/
+│   │   ├── weather.module.ts
+│   │   ├── weather.service.ts
+│   │   └── weather.controller.ts
+├── .env
+├── package.json
+└── README.md
 ```
 
-## Support
+## Contato
+Se tiver dúvidas ou sugestões, entre em contato:
+- **LinkedIn**: [linkedin.com/in/emanoelcarvalho/](https://www.linkedin.com/in/emanoelcarvalho/)
+- **GitHub**: [github.com/emanoelCarvalho](https://github.com/emanoelCarvalho)
+- **E-mail**: hemanoel718@gmail.com
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Licença
+Este projeto está licenciado sob a [MIT License](LICENSE).
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
