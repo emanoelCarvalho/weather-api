@@ -1,9 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { WeatherService } from './weather.service';
-import { CreateWeatherDto } from './dto/create-weather.dto';
-import { UpdateWeatherDto } from './dto/update-weather.dto';
 
 @Controller('weather')
 export class WeatherController {
+  constructor(private readonly weatherService: WeatherService) {}
 
+  @Get(':city')
+  async getWeather(@Param('city') city: string) {
+    return this.weatherService.getWeather(city);
+  }
 }
