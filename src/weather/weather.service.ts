@@ -5,8 +5,8 @@ import { AppConfigService } from 'src/app-config/app-config.service';
 export class WeatherService {
   constructor(private readonly configService: AppConfigService) {}
 
-  private readonly apiKey = this.configService.getApiKey
-  private readonly apiUrl;
+  private readonly apiKey = this.configService.getApiKey;
+  private readonly apiUrl = this.configService.getApiUrl;
 
   async getWeather(city: string): Promise<any> {
     try {
