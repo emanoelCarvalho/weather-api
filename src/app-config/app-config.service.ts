@@ -16,6 +16,6 @@ export class AppConfigService {
     }
 
     get getApiUrl(): string {
-        return this.config.get<string>('OPENWEATHERMAP_API_URL')
+        return this.config.get<string>('OPENWEARTHERMAP_API_URL')
     }
 }
