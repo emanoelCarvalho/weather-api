@@ -6,7 +6,7 @@ export class WeatherService {
   constructor(private readonly configService: AppConfigService) {}
 
   private readonly apiKey = this.configService.getApiKey
-  private readonly apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+  private readonly apiUrl;
 
   async getWeather(city: string): Promise<any> {
     try {
