@@ -7,12 +7,14 @@ A **Weather API** é um projeto desenvolvido em NestJS que permite consultar o c
 - Consulta de clima de qualquer cidade.
 - Integração com APIs externas para obtenção de dados meteorológicos.
 - Respostas formatadas com informações relevantes, como temperatura, umidade e descrição do tempo.
+- Documentação interativa disponível via Swagger em [http://localhost:3000/api](http://localhost:3000/api).
 
 ## Tecnologias Utilizadas
 - **NestJS**: Framework backend modular e escalável.
 - **Axios**: Biblioteca para requisições HTTP.
 - **OpenWeatherMap API**: Serviço de dados meteorológicos.
 - **@nestjs/config**: Gerenciamento de variáveis de ambiente.
+- **Swagger**: Documentação automatizada de APIs.
 
 ## Instalação e Configuração
 1. Clone o repositório:
@@ -76,6 +78,9 @@ GET http://localhost:3000/weather/London
   "name": "London"
 }
 ```
+
+### Documentação via Swagger
+Você pode acessar uma documentação interativa da API no Swagger, que está disponível em [http://localhost:3000/api](http://localhost:3000/api). Nesta documentação, é possível explorar os endpoints, ver os exemplos de resposta e testar as requisições diretamente.
 
 ## Estrutura do Projeto
 ```
