@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, BadRequestException } from '@nestjs/common';
 import { WeatherService } from './weather.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -86,7 +86,22 @@ export class WeatherController {
       },
     },
   })
+  @ApiResponse({
+    status: 400,
+    description: 'Bad Request',
+    schema: {
+      type: 'object',
+      properties: {
+        statusCode: { type: 'number', example: 400 },
+        message: { type: 'string', example: 'Invalid city name' },
+        error: { type: 'string', example: 'Bad Request' },
+      },
+    },
+  })
   async getWeather(@Param('city') city: string) {
+    if (!city || typeof city !== 'string') {
+      throw new BadRequestException('Invalid city name');
+    }
     return this.weatherService.getWeather(city);
   }
 }
