@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { WeatherModule } from './weather/weather.module';
-import { AppConfigModule } from './app-config/app-config.module';
 import { SwaggerModuleConfig } from './swagger/swagger.module';
+import { EnvModule } from './env/env.module';
 
 @Module({
-  imports: [WeatherModule, AppConfigModule, SwaggerModuleConfig],
+  imports: [WeatherModule, EnvModule, SwaggerModuleConfig],
 })
 export class AppModule {}
